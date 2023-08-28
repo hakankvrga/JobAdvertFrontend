@@ -11,8 +11,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
-    JobPostsComponent,
-    UserJobPostComponent
+    
+    
   ],
   imports: [
     CommonModule,

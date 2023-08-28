@@ -18,4 +18,4 @@ export class AppComponent {
   }  
 }
 
-$.get("https://localhost:7138/api/Users")
+

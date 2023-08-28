@@ -1,0 +1,21 @@
+.title{
+    margin: center;
+    width: 60%;
+    
+    padding: 10px;
+}
+
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+.jobPosts-create{
+    margin: 5px 5px 5px;
+}
+
+.btn{
+    margin: 5px 5px 5px;
+}
