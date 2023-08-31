@@ -3,6 +3,7 @@ import { HttpClientService } from '../http-client.service';
 import { CreateJobPost } from 'src/app/contracts/create-job-post';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ListJobPost } from 'src/app/contracts/list-job-post';
+import { Observable, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -43,4 +44,12 @@ export class JobPostService {
     return await promiseData;
   }
 
+
+ async delete(id: string) {
+  const deleteObservable: Observable<any> = this.httpClientService.delete<any> ({
+      controller: "jobPosts"
+    }, id);
+
+  await  firstValueFrom(deleteObservable);
+  }
 }

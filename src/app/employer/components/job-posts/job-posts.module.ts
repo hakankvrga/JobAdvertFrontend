@@ -11,12 +11,14 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { ListComponent } from './list/list.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { DeleteDirective } from 'src/app/directives/employer/delete.directive';
 
 @NgModule({
   declarations: [
     JobPostsComponent,
     CreateComponent,
-    ListComponent
+    ListComponent,
+    DeleteDirective
   ],
   imports: [
     CommonModule,

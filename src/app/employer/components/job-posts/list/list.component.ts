@@ -19,7 +19,7 @@ export class ListComponent extends BaseComponent implements OnInit {
   }
  
   
-  displayedColumns: string[] = ['companyName', 'title', 'jobType', 'startDate', 'endDate'];
+  displayedColumns: string[] = ['companyName', 'title', 'jobType', 'startDate', 'endDate','edit','delete'];
   dataSource: MatTableDataSource<ListJobPost> = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
