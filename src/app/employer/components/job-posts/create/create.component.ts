@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { CreateJobPost } from 'src/app/contracts/create-job-post';
@@ -15,6 +15,8 @@ export class CreateComponent extends BaseComponent  {
   super(spiner)
  }
  
+ @Output() createdJobPost: EventEmitter<CreateJobPost> = new EventEmitter();
+
   create( userId: HTMLInputElement, jobTypeId: HTMLInputElement, title: HTMLInputElement, companyName: HTMLInputElement, description: HTMLInputElement, imagePath: HTMLInputElement,startDate: HTMLInputElement, endDate: HTMLInputElement){
   this.showSpinner(SpinnerType.BallAtom);
   const createJobPost: CreateJobPost = new CreateJobPost();
@@ -34,7 +36,14 @@ export class CreateComponent extends BaseComponent  {
       dismissOthers:true,
       messageType:MessageType.Success,
       position:Position.TopRight
-    })
+    });
+    this.createdJobPost.emit(createJobPost);
+  }, errorMessage =>{
+    this.alertify.message(errorMessage,{
+      dismissOthers:true,
+      messageType: MessageType.Error,
+      position: Position.TopRight
+    });
   });
  }
   
