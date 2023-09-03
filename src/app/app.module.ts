@@ -10,23 +10,23 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BaseComponent } from './base/base.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DeleteDirective } from './directives/employer/delete.directive';
-import { DeleteDialogComponent } from './dialogs/delete-dialog/delete-dialog.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+
 
 
 
 @NgModule({
     declarations: [
-        AppComponent,
-      
-        
-        
+        AppComponent
         
     ],
     providers: [
         {provide: "baseUrl", useValue: "https://localhost:7138/api", multi: true}
     ],
     bootstrap: [AppComponent],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA  ],
     imports: [
         BrowserModule,
         AppRoutingModule,

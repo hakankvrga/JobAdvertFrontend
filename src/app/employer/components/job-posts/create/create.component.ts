@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { CreateJobPost } from 'src/app/contracts/create-job-post';
+import { FileUploadOptions } from 'src/app/services/common/file-upload/file-upload.component';
 import { JobPostService } from 'src/app/services/common/models/job-post.service';
 import { AlertifyService, MessageType, Position } from 'src/app/services/employer/alertify.service';
 
@@ -16,6 +17,14 @@ export class CreateComponent extends BaseComponent  {
  }
  
  @Output() createdJobPost: EventEmitter<CreateJobPost> = new EventEmitter();
+ @Output() fileUploadOptions: Partial<FileUploadOptions>={
+  action: "upload",
+  controller:"jobPosts",
+  explanation:"Resimleri sürükleyin veya seçin...",
+  isEmployerPage:true,
+  accept:".png, .jpeg, .jpg"
+ };
+
 
   create( userId: HTMLInputElement, jobTypeId: HTMLInputElement, title: HTMLInputElement, companyName: HTMLInputElement, description: HTMLInputElement, imagePath: HTMLInputElement,startDate: HTMLInputElement, endDate: HTMLInputElement){
   this.showSpinner(SpinnerType.BallAtom);

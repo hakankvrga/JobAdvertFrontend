@@ -14,6 +14,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { DeleteDirective } from 'src/app/directives/employer/delete.directive';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
+import { FileUploadModule } from 'src/app/services/common/file-upload/file-upload.module';
+import { DialogModule } from 'src/app/dialogs/dialog.module';
 
 
 @NgModule({
@@ -21,15 +23,14 @@ import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dial
     JobPostsComponent,
     CreateComponent,
     ListComponent,
-    DeleteDirective,
-    DeleteDialogComponent
+    DeleteDirective
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {path:"", component:JobPostsComponent}
     ]),
-    MatFormFieldModule, MatInputModule, MatSelectModule,MatButtonModule,MatSidenavModule,MatTableModule,MatPaginatorModule,MatDialogModule
+    MatFormFieldModule, MatInputModule, MatSelectModule,MatButtonModule,MatSidenavModule,MatTableModule,MatPaginatorModule,DialogModule,FileUploadModule
   ]
 })
 export class JobPostsModule { }
