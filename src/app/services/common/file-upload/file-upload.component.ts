@@ -44,43 +44,40 @@ export class FileUploadComponent {
           queryString: this.options.queryString,
           headers: new HttpHeaders({ "responseType": "blob" })
           
-        }, fileData).subscribe(data => { 
-          
-          const message: string = "Dosyalar başarıyla yüklenmiştir.";
-    
-          if (this.options.isEmployerPage) {
-            this.alertifyService.message(message,
-              {
+        }, fileData).subscribe({
+          next: (data) => {
+            // Burada işlem tamamlandığında yapılması gereken işlemleri gerçekleştirin.
+            const message: string = "Dosyalar başarıyla yüklenmiştir.";
+            if (this.options.isEmployerPage) {
+              this.alertifyService.message(message, {
                 dismissOthers: true,
                 messageType: MessageType.Success,
                 position: Position.TopRight
-              })
-          } else {
-            this.customToastrService.message(message, "Başarılı.", {
-              messageType: ToastrMessageType.Success,
-              position: ToastrPosition.TopRight
-            })
-          }
-    
-    
-        }, (errorResponse: HttpErrorResponse) => {
-    
-          const message: string = "Dosyalar yüklenirken beklenmeyen bir hatayla karşılaşılmıştır.";
-    
-          if (this.options.isEmployerPage) {
-            this.alertifyService.message(message,
-              {
+              });
+            } else {
+              this.customToastrService.message(message, "Başarılı.", {
+                messageType: ToastrMessageType.Success,
+                position: ToastrPosition.TopRight
+              });
+            }
+          },
+          error: (errorResponse: HttpErrorResponse) => {
+            // Burada bir hata oluştuğunda yapılması gereken işlemleri gerçekleştirin.
+            const message: string = "Dosyalar yüklenirken beklenmeyen bir hatayla karşılaşılmıştır.";
+            if (this.options.isEmployerPage) {
+              this.alertifyService.message(message, {
                 dismissOthers: true,
                 messageType: MessageType.Error,
                 position: Position.TopRight
-              })
-          } else {
-            this.customToastrService.message(message, "Başarsız.", {
-              messageType: ToastrMessageType.Error,
-              position: ToastrPosition.TopRight
-            })
+              });
+            } else {
+              this.customToastrService.message(message, "Başarsız.", {
+                messageType: ToastrMessageType.Error,
+                position: ToastrPosition.TopRight
+              });
+            }
           }
-    
+         
         });
       }
     })
