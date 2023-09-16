@@ -4,6 +4,7 @@ import { CreateJobPost } from 'src/app/contracts/create-job-post';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ListJobPost } from 'src/app/contracts/list-job-post';
 import { Observable, firstValueFrom } from 'rxjs';
+import { List_JobPost_Image } from 'src/app/contracts/list_jobPost-image';
 
 @Injectable({
   providedIn: 'root'
@@ -52,4 +53,30 @@ export class JobPostService {
 
   await  firstValueFrom(deleteObservable);
   }
+  
+ async readImages(id: string, succesCallBack?: ()=> void): Promise<List_JobPost_Image[]>{
+   const getObservable: Observable<List_JobPost_Image[]>= this.httpClientService.get<List_JobPost_Image[]>({
+      action:"getjobpostimages",
+      controller:"jobPosts"
+
+
+    },id);
+
+    const images: List_JobPost_Image[]= await firstValueFrom(getObservable);
+    succesCallBack();
+
+   return images;
+  }
+
+  async deleteImage(id:string, imageId: string, succesCallBack?: ()=> void){
+  const deleteObservable=  this.httpClientService.delete({
+      action:"DeleteJobPostImage",
+      controller:"jobPosts",
+      fullEndPoint:`https://localhost:7138/api/JobPosts/DeleteJobPostImage/${id}?imageId=${imageId}`
+      
+    },id)
+    await firstValueFrom(deleteObservable);
+    succesCallBack();
+  }
+
 }

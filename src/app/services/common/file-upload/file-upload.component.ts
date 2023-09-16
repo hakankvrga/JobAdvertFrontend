@@ -7,6 +7,8 @@ import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../ui
 import { MatDialog } from '@angular/material/dialog';
 import { FileUploadDialogComponent, FileUploadDialogState } from 'src/app/dialogs/file-upload-dialog/file-upload-dialog.component';
 import { DialogService } from '../dialog.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { SpinnerType } from 'src/app/base/base.component';
 
 @Component({
   selector: 'app-file-upload',
@@ -19,7 +21,8 @@ export class FileUploadComponent {
     private alertifyService: AlertifyService,
     private customToastrService: CustomToastrService,
     private dialog:MatDialog,
-    private dialogService: DialogService) { }
+    private dialogService: DialogService,
+    private spinner: NgxSpinnerService) { }
 
   public files: NgxFileDropEntry[];
 
@@ -37,7 +40,7 @@ export class FileUploadComponent {
       componentType: FileUploadDialogComponent,
       data: FileUploadDialogState.Yes,
       afterClosed: ()=>{
-        
+        this.spinner.show(SpinnerType.BallAtom)
         this.httpClientService.post({
           controller: this.options.controller,
           action: this.options.action,
@@ -46,9 +49,10 @@ export class FileUploadComponent {
           
         }, fileData).subscribe({
           next: (data) => {
-            // Burada işlem tamamlandığında yapılması gereken işlemleri gerçekleştirin.
+         
             const message: string = "Dosyalar başarıyla yüklenmiştir.";
             if (this.options.isEmployerPage) {
+              this.spinner.hide(SpinnerType.BallAtom)
               this.alertifyService.message(message, {
                 dismissOthers: true,
                 messageType: MessageType.Success,
@@ -60,10 +64,12 @@ export class FileUploadComponent {
                 position: ToastrPosition.TopRight
               });
             }
+           
           },
           error: (errorResponse: HttpErrorResponse) => {
-            // Burada bir hata oluştuğunda yapılması gereken işlemleri gerçekleştirin.
+           
             const message: string = "Dosyalar yüklenirken beklenmeyen bir hatayla karşılaşılmıştır.";
+            this.spinner.hide(SpinnerType.BallAtom)
             if (this.options.isEmployerPage) {
               this.alertifyService.message(message, {
                 dismissOthers: true,
@@ -76,6 +82,7 @@ export class FileUploadComponent {
                 position: ToastrPosition.TopRight
               });
             }
+            
           }
          
         });

@@ -24,6 +24,7 @@ import { DialogModule } from 'src/app/dialogs/dialog.module';
     CreateComponent,
     ListComponent,
     DeleteDirective
+    
   ],
   imports: [
     CommonModule,

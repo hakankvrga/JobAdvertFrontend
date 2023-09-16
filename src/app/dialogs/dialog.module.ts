@@ -4,15 +4,17 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { FileUploadDialogComponent } from './file-upload-dialog/file-upload-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
- 
+import { SelectJobPostImageDialogComponent } from './select-job-post-image-dialog/select-job-post-image-dialog.component';
+import { FileUploadModule } from '../services/common/file-upload/file-upload.module';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
   declarations: [
-    DeleteDialogComponent,FileUploadDialogComponent
+    DeleteDialogComponent, SelectJobPostImageDialogComponent
   ],
   imports: [
-    CommonModule,MatDialogModule,MatButtonModule
+    CommonModule,MatDialogModule,MatButtonModule,FileUploadModule,MatCardModule 
 
   ]
 })

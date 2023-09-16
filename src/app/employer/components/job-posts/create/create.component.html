@@ -24,10 +24,7 @@
     <mat-label>Description</mat-label>
     <input matInput #txtDescription>
   </mat-form-field>
-  <mat-form-field class="jobPosts-create">
-    <mat-label>ImagePath</mat-label>
-    <input matInput  #txtImagePath>
-  </mat-form-field>
+ 
   <mat-form-field class="jobPosts-create">
     <mat-label>StartDate</mat-label>
     <input matInput  #txtStartDate>
@@ -37,10 +34,7 @@
     <input matInput  #txtEndDate>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" (click)="create(txtUserId,txtJobTypeId,txtTitle,txtCompanyName,txtDescription,txtImagePath,txtStartDate,txtEndDate)" class="btn">İlan oluşturuldu</button>
+  <button mat-raised-button color="primary" (click)="create(txtUserId,txtJobTypeId,txtTitle,txtCompanyName,txtDescription,txtStartDate,txtEndDate)" class="btn">İlan oluşturuldu</button>
 
 
 
-<hr />
-
-<app-file-upload [options]="fileUploadOptions"></app-file-upload>

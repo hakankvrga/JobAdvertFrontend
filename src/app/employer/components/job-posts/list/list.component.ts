@@ -6,6 +6,8 @@ import { ListJobPost } from 'src/app/contracts/list-job-post';
 import { JobPostService } from 'src/app/services/common/models/job-post.service';
 import { AlertifyService, MessageType, Position } from 'src/app/services/employer/alertify.service';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import { DialogService } from 'src/app/services/common/dialog.service';
+import { SelectJobPostImageDialogComponent } from 'src/app/dialogs/select-job-post-image-dialog/select-job-post-image-dialog.component';
 
 
 @Component({
@@ -14,12 +16,15 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent extends BaseComponent implements OnInit {
-  constructor(spinner : NgxSpinnerService, private jobPostService: JobPostService, private alertifyService: AlertifyService) {
+  constructor(spinner : NgxSpinnerService,
+      private jobPostService: JobPostService,
+      private alertifyService: AlertifyService,
+      private dialogService: DialogService) {
     super(spinner)
   }
  
   
-  displayedColumns: string[] = ['companyName', 'title', 'jobType', 'startDate', 'endDate','edit','delete'];
+  displayedColumns: string[] = ['companyName', 'title', 'jobType', 'startDate', 'endDate','photos','edit','delete'];
   dataSource: MatTableDataSource<ListJobPost> = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -33,6 +38,16 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.dataSource= new  MatTableDataSource<ListJobPost>(allJobPosts.jobPosts);
     this.paginator.length= allJobPosts.totalCount;
     
+ }
+
+ addJobPostImages(id: string){
+   this.dialogService.openDialog({
+    componentType: SelectJobPostImageDialogComponent,
+    data: id,
+    options: {
+      width: "1400px"
+    }
+     });
  }
 
   async pageChanged(){
