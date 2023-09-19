@@ -72,7 +72,7 @@ export class JobPostService {
   const deleteObservable=  this.httpClientService.delete({
       action:"DeleteJobPostImage",
       controller:"jobPosts",
-      fullEndPoint:`https://localhost:7138/api/JobPosts/DeleteJobPostImage/${id}?imageId=${imageId}`
+      queryString:`imageId=${imageId}`
       
     },id)
     await firstValueFrom(deleteObservable);

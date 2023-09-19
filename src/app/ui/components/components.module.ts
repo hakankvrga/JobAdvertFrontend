@@ -4,18 +4,22 @@ import { JobPostsComponent } from './job-posts/job-posts.component';
 import { ApplicationsModule } from './applications/applications.module';
 import { HomeModule } from './home/home.module';
 import { JobPostsModule } from './job-posts/job-posts.module';
+import { RegisterComponent } from './register/register.component';
+import { RegisterModule } from './register/register.module';
 
 
 
 @NgModule({
   declarations: [
     JobPostsComponent
+    
   ],
   imports: [
     CommonModule,
     ApplicationsModule,
     HomeModule,
-    JobPostsModule
+    JobPostsModule,
+    RegisterModule
   ]
 })
 export class ComponentsModule { }
