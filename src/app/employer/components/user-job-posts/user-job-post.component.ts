@@ -13,6 +13,6 @@ export class UserJobPostComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void{
-    this.showSpinner(SpinnerType.BallAtom); 
+     
   }
 }

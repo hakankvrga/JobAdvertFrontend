@@ -22,7 +22,7 @@ import { LoginModule } from './login/login.module';
     HomeModule,
     JobPostsModule,
     RegisterModule,
-    LoginModule
+    //LoginModule
   ]
 })
 export class ComponentsModule { }
