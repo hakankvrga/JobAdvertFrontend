@@ -13,70 +13,82 @@ export class JobPostService {
 
   constructor(private httpClientService: HttpClientService) { }
 
-  create(jobPost: CreateJobPost, succesCallBack?: ()=> void, errorCallBack?: (errorMessage: string)=> void){
+  create(jobPost: CreateJobPost, succesCallBack?: () => void, errorCallBack?: (errorMessage: string) => void) {
     this.httpClientService.post({
-      controller:"JobPosts"
-      
-    },jobPost)
-    .subscribe(result =>{
-      succesCallBack();
-      
-    }, (errorResponse: HttpErrorResponse) =>{
-     const _error: Array<{key : string, value: Array<string>}>=  errorResponse.error;
-     let message ="";
-     _error.forEach((v, index)=>{
-      v.value.forEach((_v, _index)=>{
-        message += `${_v}<br>`;
+      controller: "JobPosts"
+
+    }, jobPost)
+      .subscribe(result => {
+        succesCallBack();
+
+      }, (errorResponse: HttpErrorResponse) => {
+        const _error: Array<{ key: string, value: Array<string> }> = errorResponse.error;
+        let message = "";
+        _error.forEach((v, index) => {
+          v.value.forEach((_v, _index) => {
+            message += `${_v}<br>`;
+          });
+        });
+        errorCallBack(message);
       });
-     });
-     errorCallBack(message);
-    });
   }
 
-  async read(page:number= 0, size: number=5, succesCallBack?: ()=> void, errorCallBack?: (errorMessage: string)=> void): Promise<{totalCount:number; jobPosts:ListJobPost[] }> {
-   const promiseData: Promise<{totalCount:number; jobPosts:ListJobPost[] }> = this.httpClientService.get<{totalCount:number; jobPosts:ListJobPost[] }>({
-      controller:"jobPosts",
-      queryString:`page=${page}&size=${size}`
+  async read(page: number = 0, size: number = 5, succesCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{ totalJobPostCount: number; jobPosts: ListJobPost[] }> {
+    const promiseData: Promise<{ totalJobPostCount: number; jobPosts: ListJobPost[] }> = this.httpClientService.get<{ totalJobPostCount: number; jobPosts: ListJobPost[] }>({
+      controller: "jobPosts",
+      queryString: `page=${page}&size=${size}`
     }).toPromise();
 
     promiseData.then(d => succesCallBack())
-    .catch((errorResponse: HttpErrorResponse)=>errorCallBack(errorResponse.message))
+      .catch((errorResponse: HttpErrorResponse) => errorCallBack(errorResponse.message))
 
     return await promiseData;
   }
 
 
- async delete(id: string) {
-  const deleteObservable: Observable<any> = this.httpClientService.delete<any> ({
+  async delete(id: string) {
+    const deleteObservable: Observable<any> = this.httpClientService.delete<any>({
       controller: "jobPosts"
     }, id);
 
-  await  firstValueFrom(deleteObservable);
+    await firstValueFrom(deleteObservable);
   }
-  
- async readImages(id: string, succesCallBack?: ()=> void): Promise<List_JobPost_Image[]>{
-   const getObservable: Observable<List_JobPost_Image[]>= this.httpClientService.get<List_JobPost_Image[]>({
-      action:"getjobpostimages",
-      controller:"jobPosts"
+
+  async readImages(id: string, succesCallBack?: () => void): Promise<List_JobPost_Image[]> {
+    const getObservable: Observable<List_JobPost_Image[]> = this.httpClientService.get<List_JobPost_Image[]>({
+      action: "getjobpostimages",
+      controller: "jobPosts"
 
 
-    },id);
+    }, id);
 
-    const images: List_JobPost_Image[]= await firstValueFrom(getObservable);
+    const images: List_JobPost_Image[] = await firstValueFrom(getObservable);
     succesCallBack();
 
-   return images;
+    return images;
   }
 
-  async deleteImage(id:string, imageId: string, succesCallBack?: ()=> void){
-  const deleteObservable=  this.httpClientService.delete({
-      action:"DeleteJobPostImage",
-      controller:"jobPosts",
-      queryString:`imageId=${imageId}`
-      
-    },id)
+  async deleteImage(id: string, imageId: string, succesCallBack?: () => void) {
+    const deleteObservable = this.httpClientService.delete({
+      action: "DeleteJobPostImage",
+      controller: "jobPosts",
+      queryString: `imageId=${imageId}`
+
+    }, id)
     await firstValueFrom(deleteObservable);
     succesCallBack();
   }
 
+
+  async changeShowcaseImage(imageId: string, jobPostId: string, successCallBack?: () => void) : Promise<void> {
+    const changeShowcaseImageObservable = this.httpClientService.get({
+      action: "ChangeShowcaseImage",
+      controller: "jobPosts",
+      queryString: `imageId=${imageId}&jobPostId=${jobPostId}`
+    });
+    await firstValueFrom(changeShowcaseImageObservable);
+    successCallBack();
+  } 
+
 }
+

@@ -17,6 +17,7 @@ const routes: Routes = [
   {path:"", component: HomeComponent},
   {path:"applications", loadChildren :()=> import("./ui/components/applications/applications.module").then(module=> module.ApplicationsModule)},
   {path:"jobPosts", loadChildren :()=> import("./ui/components/job-posts/job-posts.module").then(module=> module.JobPostsModule)},
+  {path:"jobPosts/:pageNo", loadChildren :()=> import("./ui/components/job-posts/job-posts.module").then(module=> module.JobPostsModule)},
   {path:"register", loadChildren :()=> import("./ui/components/register/register.module").then(module=> module.RegisterModule)},
   {path:"login", loadChildren :()=> import("./ui/components/login/login.module").then(module=> module.LoginModule)}
 ];

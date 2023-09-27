@@ -30,13 +30,13 @@ export class ListComponent extends BaseComponent implements OnInit {
 
  async getJobPosts() {
   this.showSpinner(SpinnerType.BallAtom);
-  const allJobPosts: {totalCount:number; jobPosts:ListJobPost[] }= await  this.jobPostService.read(this.paginator? this.paginator.pageIndex:0, this.paginator? this.paginator.pageSize:5, ()=> this.hideSpinner(SpinnerType.BallAtom), errorMessage=> this.alertifyService.message(errorMessage,{
+  const allJobPosts: {totalJobPostCount:number; jobPosts:ListJobPost[] }= await  this.jobPostService.read(this.paginator? this.paginator.pageIndex:0, this.paginator? this.paginator.pageSize:5, ()=> this.hideSpinner(SpinnerType.BallAtom), errorMessage=> this.alertifyService.message(errorMessage,{
       dismissOthers: true,
       messageType: MessageType.Error,
       position: Position.TopRight
     }))
     this.dataSource= new  MatTableDataSource<ListJobPost>(allJobPosts.jobPosts);
-    this.paginator.length= allJobPosts.totalCount;
+    this.paginator.length= allJobPosts.totalJobPostCount;
     
  }
 

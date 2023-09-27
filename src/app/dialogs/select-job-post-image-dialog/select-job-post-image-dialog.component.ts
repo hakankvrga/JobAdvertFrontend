@@ -62,7 +62,15 @@ export class SelectJobPostImageDialogComponent extends BaseDialog<SelectJobPostI
   })
 
 
- 
+  
+  }
+
+  showCase(imageId: string) {
+    this.spinner.show(SpinnerType.BallAtom);
+
+    this.jobPostService.changeShowcaseImage(imageId, this.data as string, () => {
+      this.spinner.hide(SpinnerType.BallAtom);
+    });
   }
 }
 

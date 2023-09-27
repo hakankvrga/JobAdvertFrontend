@@ -1,11 +1,14 @@
+import { List_JobPost_Image } from "./list_jobPost-image";
+
 export class ListJobPost {
 
     id:number;
-    jobTypeId: number;
+    
     title: string;
     companyName:string;
     description: string;
-    imagePath : string;
     startDate: Date;
     endDate: Date;
+    jobPostImageFiles? : List_JobPost_Image[];
+    imagePath: string;
 }

@@ -1,0 +1,21 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* İstenilen boşluk miktarına göre ayarlayabilirsiniz */
+  }
+  
+  .pagination li {
+    list-style: none;
+    margin-right: 10px; /* İstenilen aralığa göre ayarlayabilirsiniz */
+  }
+  
+  .pagination li:last-child {
+    margin-right: 0;
+  }
+  
+ 
+  
+
+  
+  

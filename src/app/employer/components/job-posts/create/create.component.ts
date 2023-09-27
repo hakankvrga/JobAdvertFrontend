@@ -20,12 +20,12 @@ export class CreateComponent extends BaseComponent  {
  
 
 
-  create( userId: HTMLInputElement, jobTypeId: HTMLInputElement, title: HTMLInputElement, companyName: HTMLInputElement, description: HTMLInputElement,startDate: HTMLInputElement, endDate: HTMLInputElement){
+  create( userId: HTMLInputElement,  title: HTMLInputElement, companyName: HTMLInputElement, description: HTMLInputElement,startDate: HTMLInputElement, endDate: HTMLInputElement){
   this.showSpinner(SpinnerType.BallAtom);
   const createJobPost: CreateJobPost = new CreateJobPost();
  
   createJobPost.userId=parseInt(userId.value);
-  createJobPost.jobTypeId=parseInt(jobTypeId.value);
+  
   createJobPost.title=title.value;
   createJobPost.companyName=companyName.value;
   createJobPost.description=description.value;
