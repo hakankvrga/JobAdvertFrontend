@@ -1,0 +1,55 @@
+/* Navbar stilini özelleştirme */
+.navbar {
+    background-color: #480606; /* Navbar arka plan rengi */
+    color: #fff; /* Navbar metin rengi */
+    
+  }
+  
+  /* Navbar linkleri */
+  .navbar-nav .nav-link {
+    color: #f27979; /* Navbar linkleri metin rengi */
+    padding: 0.5rem 1rem; /* Navbar linkleri iç ve dış boşluğu */
+  }
+  
+  /* Navbar linkleri üzerine gelindiğinde stil */
+  .navbar-nav .nav-link:hover {
+    background-color: #afcbe8; /* Link üzerine gelindiğinde arka plan rengi */
+  }
+  
+ 
+
+  /* İşveren ve Başvuran dropdown stilleri */
+  .dropdown-toggle {
+    background-color: transparent !important; /* Dropdown başlık arka plan rengi */
+    color: #f27979 !important; /* Dropdown başlık metin rengi */
+    border: none !important; /* Dropdown başlık kenarlık yok */
+    
+  }
+  
+  /* Dropdown menü arka planı */
+  .dropdown-menu {
+    background-color: #f27979;
+  }
+  
+  /* Dropdown menü linkleri */
+  .dropdown-item {
+    color: #fff;
+  }
+  
+  /* Dropdown menü linkleri üzerine gelindiğinde stil */
+  .dropdown-item:hover {
+    background-color: #95c6fa;
+    color: #fff;
+  }
+  
+  /* Çıkış Yap linki stil */
+  .navbar-nav .nav-link.active[style] {
+    color: red; /* Çıkış Yap linki metin rengi */
+    cursor: pointer; /* Çıkış Yap linki imleç tipi */
+  }
+  
+  /* Sayfa içeriği */
+  .router-outlet {
+    padding: 20px; /* Sayfa içeriği iç boşluğu */
+  }
+  

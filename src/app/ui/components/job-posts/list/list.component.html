@@ -1,7 +1,7 @@
 <div class="row">
   <div class="card" style="width: 18rem;float: left;margin: 5px;" *ngFor="let jobpost of jobPosts;">
-    <img width="250px" height="250px" *ngIf="!jobpost.jobPostImageFiles.length" src="../../../../assets/job-advert-foto.jpg" class="card-img-top" alt="...">
-    <img width="250px" height="250px"  *ngIf="jobpost.jobPostImageFiles.length" src="{{baseUrl.url}}/{{jobpost.imagePath}}" class="card-img-top" alt="...">
+    <img  *ngIf="!jobpost.jobPostImageFiles.length" src="../../../../assets/job-advert-foto.jpg" class="card-img-top" alt="...">
+    <img  *ngIf="jobpost.jobPostImageFiles.length" src="{{baseUrl.url}}/{{jobpost.imagePath}}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{jobpost.companyName}}</h5>
       <p class="card-text">{{jobpost.title}}</p>

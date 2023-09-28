@@ -7,6 +7,7 @@ import { JobPostsModule } from './job-posts/job-posts.module';
 import { RegisterComponent } from './register/register.component';
 import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
+import { NormalRegisterModule } from './register/normal-register/normal-register.module';
 
 
 
@@ -21,6 +22,7 @@ import { LoginModule } from './login/login.module';
     HomeModule,
     JobPostsModule,
     RegisterModule,
+    NormalRegisterModule
     //LoginModule
   ]
 })
