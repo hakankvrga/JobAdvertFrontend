@@ -24,16 +24,15 @@ export class ListComponent implements OnInit {
   async ngOnInit() {
     this.baseUrl = await this.fileService.getBaseStoragaUrl();
 
-    this.activatedRoute.params.subscribe(async params => {
-      this.currentPageNo = parseInt(params["pageNo"] ?? 1);
-      const data: { totalJobPostCount: number, jobPosts: ListJobPost[] } = await this.jobPostService.read(this.currentPageNo - 1, this.pageSize,
+    this.activatedRoute.params.subscribe(async params => {  // Sayfa numarası değiştiğinde çalışır.
+      this.currentPageNo = parseInt(params["pageNo"] ?? 1); // Sayfa numarasını alıyoruz.
+      const data: { totalJobPostCount: number, jobPosts: ListJobPost[] } =   await this.jobPostService.read(this.currentPageNo - 1, this.pageSize,
         () => {
 
         }, errorMessage => {
 
         });
-      this.jobPosts = data.jobPosts;
-
+      this.jobPosts = data.jobPosts; // Gelen verileri değişkene atıyoruz.
      this.jobPosts= this.jobPosts.map<ListJobPost>( j => {
      
 
@@ -51,15 +50,10 @@ export class ListComponent implements OnInit {
         return listJobPost;
 
 
-      });
-
-     
-
-      this.totalJobPostCount = data.totalJobPostCount;
-      this.totalPageCount = Math.ceil(this.totalJobPostCount / this.pageSize);
-
-      this.pageList = [];
-
+      }); 
+      this.totalJobPostCount = data.totalJobPostCount;// Toplam iş ilanı sayısını alıyoruz.
+      this.totalPageCount = Math.ceil(this.totalJobPostCount / this.pageSize); // Toplam sayfa sayısını alıyoruz.
+      this.pageList = []; // Sayfa listesini sıfırlıyoruz.
       if (this.totalPageCount >= 7) {
 
         if (this.currentPageNo - 3 <= 0) {
@@ -78,12 +72,11 @@ export class ListComponent implements OnInit {
           }
         }
 
-      }
+      } // Sayfa sayısı 7'den büyükse sayfa listesini oluşturuyoruz.
       else {
-
         for (let i = 1; i <= this.totalPageCount; i++) {
           this.pageList.push(i);
-        }
+        } // Sayfa sayısı 7'den küçükse sayfa listesini oluşturuyoruz.
 
       }
     });

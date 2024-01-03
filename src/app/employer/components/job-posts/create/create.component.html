@@ -1,37 +1,40 @@
 
 
-<h1 class="title">İlan Oluştur</h1>
+  <h1 class="title">İlan Oluştur</h1>
 
-
-
-  <mat-form-field class="jobPosts-create">
-    <mat-label>UserId</mat-label>
-    <input matInput type="number" value="0" #txtUserId>
-  </mat-form-field>
+    <mat-form-field class="jobPosts-create">
+      <mat-label>Title</mat-label>
+      <input matInput #txtTitle>
+    </mat-form-field>
+    <mat-form-field class="jobPosts-create">
+      <mat-label>CompanyName</mat-label>
+      <input matInput #txtCompanyName>
+    </mat-form-field>
+    <mat-form-field class="jobPosts-create">
+      <mat-label>Description</mat-label>
+      <input matInput #txtDescription>
+    </mat-form-field>
   
-  <mat-form-field class="jobPosts-create">
-    <mat-label>Title</mat-label>
-    <input matInput #txtTitle>
-  </mat-form-field>
-  <mat-form-field class="jobPosts-create">
-    <mat-label>CompanyName</mat-label>
-    <input matInput #txtCompanyName>
-  </mat-form-field>
-  <mat-form-field class="jobPosts-create">
-    <mat-label>Description</mat-label>
-    <input matInput #txtDescription>
-  </mat-form-field>
- 
-  <mat-form-field class="jobPosts-create">
-    <mat-label>StartDate</mat-label>
-    <input matInput  #txtStartDate>
-  </mat-form-field>
-  <mat-form-field class="jobPosts-create">
-    <mat-label>EndDate</mat-label>
-    <input matInput  #txtEndDate>
-  </mat-form-field>
+  
 
-  <button mat-raised-button color="primary" (click)="create(txtUserId,txtTitle,txtCompanyName,txtDescription,txtStartDate,txtEndDate)" class="btn">İlan oluşturuldu</button>
+
+
+    <mat-form-field>
+      <mat-label>İlan süresini giriniz</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Start date"  #txtStartDate>
+        <input matEndDate placeholder="End date" #txtEndDate>
+      </mat-date-range-input>
+      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field> 
+
+
+
+    
+
+    <button mat-raised-button color="primary" (click)="create(txtTitle,txtCompanyName,txtDescription,txtStartDate,txtEndDate)" class="btn">İlan oluşturuldu</button>
 
 
 

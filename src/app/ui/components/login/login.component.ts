@@ -7,7 +7,7 @@ import { TokenResponse } from 'src/app/contracts/token/tokenResponse';
 import { AuthService } from 'src/app/services/common/auth.service';
 import { HttpClientService } from 'src/app/services/common/http-client.service';
 import { UserAuthService } from 'src/app/services/common/models/user-auth.service';
-import { UserService } from 'src/app/services/common/models/user.service';
+
 
 
 @Component({
@@ -36,7 +36,10 @@ export class LoginComponent extends BaseComponent {
       const returnUrl: string = params["returnUrl"];
       if (returnUrl) {
         this.router.navigate([returnUrl]);
-      } 
+      } else {
+        // returnUrl yoksa varsayılan olarak "jobPosts" rotasına yönlendir
+        this.router.navigate(['/jobPosts']);
+      }
     });
     this.hideSpinner(SpinnerType.BallAtom);
    });

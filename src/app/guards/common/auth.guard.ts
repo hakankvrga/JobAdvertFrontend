@@ -17,28 +17,15 @@ export class AuthGuard implements CanActivate {
 
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) { 
     this.spinner.show(SpinnerType.BallAtom);
-    // const token: string = localStorage.getItem("accessToken");
-
-    // //const decodeToken = this.jwtHelper.decodeToken(token);
-    // //const expirationDate: Date = this.jwtHelper.getTokenExpirationDate(token);
-    // let expired: boolean;
-    // try {
-    //   expired = this.jwtHelper.isTokenExpired(token);
-    // } catch {
-    //   expired = true;
-    // }
-
-    if (!_isAuthenticated) {
+    if (!_isAuthenticated) { //eğer token yoksa login sayfasına yönlendiriyoruz.
       this.router.navigate(["login"], { queryParams: { returnUrl: state.url } });
       this.toastrService.message("Oturum açmanız gerekiyor!", "Yetkisiz Erişim!", {
         messageType: ToastrMessageType.Warning,
         position: ToastrPosition.TopRight
       })
     }
-
-
     this.spinner.hide(SpinnerType.BallAtom);
 
     return true;

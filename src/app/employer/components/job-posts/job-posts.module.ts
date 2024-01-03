@@ -12,11 +12,11 @@ import { ListComponent } from './list/list.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { DeleteDirective } from 'src/app/directives/employer/delete.directive';
-import {MatDialogModule} from '@angular/material/dialog';
-import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
+
 import { FileUploadModule } from 'src/app/services/common/file-upload/file-upload.module';
 import { DialogModule } from 'src/app/dialogs/dialog.module';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { DialogModule } from 'src/app/dialogs/dialog.module';
     RouterModule.forChild([
       {path:"", component:JobPostsComponent}
     ]),
-    MatFormFieldModule, MatInputModule, MatSelectModule,MatButtonModule,MatSidenavModule,MatTableModule,MatPaginatorModule,DialogModule,FileUploadModule
+    MatFormFieldModule, MatInputModule, MatSelectModule,MatButtonModule,MatSidenavModule,MatTableModule,MatPaginatorModule,DialogModule,FileUploadModule,MatDatepickerModule,MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule
   ]
 })
 export class JobPostsModule { }

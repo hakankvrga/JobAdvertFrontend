@@ -1,65 +1,24 @@
-
-
-.card {
-  width: 18rem;
-  margin: 5px auto;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-/* Sağdaki boşluğu azalt */
-.row {
-  justify-content: center; /* Kartları yatayda ortala */
-}
-
-/* Sayfayı dolduracak şekilde kartları genişletin */
-.card-deck {
-  flex-wrap: nowrap;
-  margin-right: -5px;
-  margin-left: -5px;
-}
-
-
-
-.card-body {
-  flex-grow: 1; /* Metin bölümünü genişletin, böylece resimler ile sayfa boyunca eşit yükseklik elde edilir */
-  max-height: 100%; /* Kartın içeriği sayfayı aşmamasını sağlar */
-  overflow: hidden; /* İçerik taşarsa gizler */
-}
-
-.card-title {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.card-text {
-  flex-grow: 1; /* Metin bölümünü genişletin */
-  margin-bottom: 0.5rem;
-}
-
-.card-img-top {
-  max-height: 100%; /* Resimlerin kartın yüksekliğini aşmasını önleyin */
-  object-fit: cover; /* Resimleri orantılı olarak doldurun */
-}
-
-/* Sayfa numarası ve sayfa gezinme stilleri */
 .pagination {
-  justify-content: center; /* Sayfaları yatay olarak hizala */
-  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .page-item {
-  display: inline-block;
-  margin-right: 5px;
+  margin: 0 5px;
 }
 
-.page-link {
-  cursor: pointer;
+.btn {
+  font-family: 'Exo 2', sans-serif;
 }
 
-.page-link.active {
-  background-color: #007bff;
-  border-color: #007bff;
-  color: #fff;
+.card-title {
+  font-size: 20px;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: bold;
 }
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&family=Zeyada&display=swap');
+

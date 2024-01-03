@@ -1,1 +1,40 @@
-<p>user works!</p>
+
+
+<h1 class="title">İlan Oluştur</h1>
+
+<mat-form-field class="jobPosts-create">
+  <mat-label>Title</mat-label>
+  <input matInput #txtTitle>
+</mat-form-field>
+<mat-form-field class="jobPosts-create">
+  <mat-label>CompanyName</mat-label>
+  <input matInput #txtCompanyName>
+</mat-form-field>
+<mat-form-field class="jobPosts-create">
+  <mat-label>Description</mat-label>
+  <input matInput #txtDescription>
+</mat-form-field>
+
+
+
+
+
+<mat-form-field>
+  <mat-label>İlan süresini giriniz</mat-label>
+  <mat-date-range-input [rangePicker]="picker">
+    <input matStartDate placeholder="Start date"  #txtStartDate>
+    <input matEndDate placeholder="End date" #txtEndDate>
+  </mat-date-range-input>
+  <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
+</mat-form-field> 
+
+
+
+
+
+<button mat-raised-button color="primary" (click)="create(txtTitle,txtCompanyName,txtDescription,txtStartDate,txtEndDate)" class="btn">İlan oluşturuldu</button>
+
+
+

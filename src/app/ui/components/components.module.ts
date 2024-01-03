@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
 import { NormalRegisterModule } from './register/normal-register/normal-register.module';
+import { ApplyModule } from './apply/apply.module';
 
 
 
@@ -22,7 +23,8 @@ import { NormalRegisterModule } from './register/normal-register/normal-register
     HomeModule,
     JobPostsModule,
     RegisterModule,
-    NormalRegisterModule
+    NormalRegisterModule,
+    ApplyModule
     //LoginModule
   ]
 })

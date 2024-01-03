@@ -1,25 +1,18 @@
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
   
-      <!-- Position Column -->
+      
       <ng-container matColumnDef="companyName">
         <th mat-header-cell *matHeaderCellDef> Şirket </th>
         <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
       </ng-container>
   
-      <!-- Name Column -->
+     
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef> Başlık </th>
         <td mat-cell *matCellDef="let element"> {{element.title}} </td>
       </ng-container>
-  
-     
-      <ng-container matColumnDef="jobType">
-        <th mat-header-cell *matHeaderCellDef> İş türü </th>
-        <td mat-cell *matCellDef="let element"> {{element. jobTypeId}} </td>
-      </ng-container>
-  
-     
+
       <ng-container matColumnDef="startDate">
         <th mat-header-cell *matHeaderCellDef> Başlangıç Tarihi </th>
         <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>

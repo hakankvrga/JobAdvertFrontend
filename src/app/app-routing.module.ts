@@ -16,11 +16,16 @@ const routes: Routes = [
 
   {path:"", component: HomeComponent},
   {path:"applications", loadChildren :()=> import("./ui/components/applications/applications.module").then(module=> module.ApplicationsModule)},
-  {path:"jobPosts", loadChildren :()=> import("./ui/components/job-posts/job-posts.module").then(module=> module.JobPostsModule)},
+  {path:"jobPosts" , loadChildren :()=> import("./ui/components/job-posts/job-posts.module").then(module=> module.JobPostsModule)
+,data:{
+  name:'jobPost'
+}},
   {path:"jobPosts/:pageNo", loadChildren :()=> import("./ui/components/job-posts/job-posts.module").then(module=> module.JobPostsModule)},
   {path:"normalRegister", loadChildren :()=> import("./ui/components/register/normal-register/normal-register.module").then(module=> module.NormalRegisterModule)},
   {path:"register", loadChildren :()=> import("./ui/components/register/register.module").then(module=> module.RegisterModule)},
-  {path:"login", loadChildren :()=> import("./ui/components/login/login.module").then(module=> module.LoginModule)}
+  {path:"login", loadChildren :()=> import("./ui/components/login/login.module").then(module=> module.LoginModule)},
+  {path:"apply", loadChildren :()=> import("./ui/components/apply/apply.module").then(module=> module.ApplyModule)}
+  
 ];
 
 @NgModule({

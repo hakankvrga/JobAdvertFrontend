@@ -1,27 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ApplyComponent } from './apply.component';
 import { RouterModule } from '@angular/router';
-import { JobPostsComponent } from './job-posts.component';
-
-
-import { ListComponent } from './list/list.component';
-
-
 
 
 
 @NgModule({
   declarations: [
-    JobPostsComponent,
-    ListComponent
-    
+    ApplyComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path:"", component:JobPostsComponent}
+      {path:"apply/:id", component:ApplyComponent}
     ])
-    
   ]
 })
-export class JobPostsModule { }
+export class ApplyModule { }

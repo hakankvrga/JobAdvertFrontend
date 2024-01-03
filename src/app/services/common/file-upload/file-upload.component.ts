@@ -28,7 +28,7 @@ export class FileUploadComponent {
 
   @Input() options: Partial<FileUploadOptions>;
 
-  public selectedFiles(files: NgxFileDropEntry[]) {
+  public selectedFiles(files: NgxFileDropEntry[]) { //seçilen dosyayı elde etme
     this.files = files;
     const fileData: FormData = new FormData();
     for (const file of files) {
@@ -36,7 +36,7 @@ export class FileUploadComponent {
         fileData.append(_file.name, _file, file.relativePath);
       });
     }
-    this.dialogService.openDialog({
+    this.dialogService.openDialog({ //kullanıcıyı karşılayan pencere 
       componentType: FileUploadDialogComponent,
       data: FileUploadDialogState.Yes,
       afterClosed: ()=>{
@@ -45,12 +45,12 @@ export class FileUploadComponent {
           controller: this.options.controller,
           action: this.options.action,
           queryString: this.options.queryString,
-          headers: new HttpHeaders({ "responseType": "blob" })
+          headers: new HttpHeaders({ "responseType": "blob" }) //alınan parametrelerin atanması
           
         }, fileData).subscribe({
           next: (data) => {
          
-            const message: string = "Dosyalar başarıyla yüklenmiştir.";
+            const message: string = "Dosyalar başarıyla yüklenmiştir."; // işlem başarılıysa dönülen geri bildirim
             if (this.options.isEmployerPage) {
               this.spinner.hide(SpinnerType.BallAtom)
               this.alertifyService.message(message, {

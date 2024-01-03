@@ -18,7 +18,6 @@ export class RegisterComponent extends BaseComponent implements OnInit {
     super(spinner)
   }
  
-
   frm: FormGroup;
 
   ngOnInit(): void {

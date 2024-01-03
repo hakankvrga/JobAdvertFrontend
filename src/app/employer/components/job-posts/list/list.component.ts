@@ -9,7 +9,6 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { DialogService } from 'src/app/services/common/dialog.service';
 import { SelectJobPostImageDialogComponent } from 'src/app/dialogs/select-job-post-image-dialog/select-job-post-image-dialog.component';
 
-
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -23,8 +22,7 @@ export class ListComponent extends BaseComponent implements OnInit {
     super(spinner)
   }
  
-  
-  displayedColumns: string[] = ['companyName', 'title', 'jobType', 'startDate', 'endDate','photos','edit','delete'];
+  displayedColumns: string[] = ['companyName', 'title',  'startDate', 'endDate','photos','edit','delete'];
   dataSource: MatTableDataSource<ListJobPost> = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -39,7 +37,6 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.paginator.length= allJobPosts.totalJobPostCount;
     
  }
-
  addJobPostImages(id: string){
    this.dialogService.openDialog({
     componentType: SelectJobPostImageDialogComponent,

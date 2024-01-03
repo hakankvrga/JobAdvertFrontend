@@ -20,35 +20,35 @@ export class CreateComponent extends BaseComponent  {
  
 
 
-  create( userId: HTMLInputElement,  title: HTMLInputElement, companyName: HTMLInputElement, description: HTMLInputElement,startDate: HTMLInputElement, endDate: HTMLInputElement){
-  this.showSpinner(SpinnerType.BallAtom);
-  const createJobPost: CreateJobPost = new CreateJobPost();
- 
-  createJobPost.userId=parseInt(userId.value);
-  
-  createJobPost.title=title.value;
-  createJobPost.companyName=companyName.value;
-  createJobPost.description=description.value;
-  
-  createJobPost.startDate=startDate.value;
-  createJobPost.endDate=endDate.value;
+  create(title: HTMLInputElement, companyName: HTMLInputElement, description: HTMLInputElement, startDateInput: HTMLInputElement, endDateInput: HTMLInputElement) {
+    this.showSpinner(SpinnerType.BallAtom);
+    const createJobPost: CreateJobPost = new CreateJobPost();
 
-  this.jobPostService.create(createJobPost, ()=> {
-    this.hideSpinner(SpinnerType.BallAtom);
-    this.alertify.message("ilan oluşturudu",{
-      dismissOthers:true,
-      messageType:MessageType.Success,
-      position:Position.TopRight
+    createJobPost.title = title.value;
+    createJobPost.companyName = companyName.value;
+    createJobPost.description = description.value;
+
+    const startDate = new Date(startDateInput.value);
+    const endDate = new Date(endDateInput.value);
+    createJobPost.startDate = startDate.toISOString();
+    createJobPost.endDate = endDate.toISOString();
+
+    this.jobPostService.create(createJobPost, () => {
+      this.hideSpinner(SpinnerType.BallAtom);
+      this.alertify.message("ilan oluşturudu", {
+        dismissOthers: true,
+        messageType: MessageType.Success,
+        position: Position.TopRight
+      });
+      this.createdJobPost.emit(createJobPost);
+    }, errorMessage => {
+      this.alertify.message(errorMessage, {
+        dismissOthers: true,
+        messageType: MessageType.Error,
+        position: Position.TopRight
+      });
     });
-    this.createdJobPost.emit(createJobPost);
-  }, errorMessage =>{
-    this.alertify.message(errorMessage,{
-      dismissOthers:true,
-      messageType: MessageType.Error,
-      position: Position.TopRight
-    });
-  });
- }
+  }
   
 
 }

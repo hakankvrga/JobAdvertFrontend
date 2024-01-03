@@ -1,0 +1,51 @@
+// İlan Oluştur Sayfası SCSS
+
+// Genel sayfa stilini belirle
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+  }
+  
+  // İlan oluşturma formu stilini belirle
+  .jobPosts-create {
+    display: block;
+    margin-bottom: 20px;
+  
+    // Input stilini belirle
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 5px;
+    }
+  }
+  
+  // İlan süresi girişi stilini belirle
+  mat-date-range-input {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  
+    // Input stilini belirle
+    input {
+      flex: 1;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+  }
+  
+  // İlan süresi girişi içindeki buton stilini belirle
+  mat-datepicker-toggle {
+    margin-top: 5px;
+  }
+  
+  // İlan oluştur butonu stilini belirle
+  .btn {
+    background-color: #2196F3;
+    color: #fff;
+    &:hover {
+      background-color: #1565C0;
+    }
+  }
+  
