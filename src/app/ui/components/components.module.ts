@@ -9,6 +9,7 @@ import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
 import { NormalRegisterModule } from './register/normal-register/normal-register.module';
 import { ApplyModule } from './apply/apply.module';
+import { NormalLoginComponent } from './normal-login/normal-login.component';
 
 
 
@@ -16,6 +17,8 @@ import { ApplyModule } from './apply/apply.module';
 @NgModule({
   declarations: [
     
+  
+    NormalLoginComponent
   ],
   imports: [
     CommonModule,

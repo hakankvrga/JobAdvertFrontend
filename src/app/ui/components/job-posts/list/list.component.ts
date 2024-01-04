@@ -28,9 +28,7 @@ export class ListComponent implements OnInit {
       this.currentPageNo = parseInt(params["pageNo"] ?? 1); // Sayfa numarasını alıyoruz.
       const data: { totalJobPostCount: number, jobPosts: ListJobPost[] } =   await this.jobPostService.read(this.currentPageNo - 1, this.pageSize,
         () => {
-
         }, errorMessage => {
-
         });
       this.jobPosts = data.jobPosts; // Gelen verileri değişkene atıyoruz.
      this.jobPosts= this.jobPosts.map<ListJobPost>( j => {
@@ -42,7 +40,10 @@ export class ListComponent implements OnInit {
           companyName: j.companyName,
           startDate: j.startDate,
           endDate: j.endDate,
-          imagePath:`${j.jobPostImageFiles.length ? j.jobPostImageFiles.find(j=>j.showcase).path : ""}` ,
+
+          imagePath: `${j.jobPostImageFiles && j.jobPostImageFiles.length 
+            ? (j.jobPostImageFiles.find(j => j.showcase) || j.jobPostImageFiles[0])?.path || "" 
+            : ""}`,
           description: j.description,
           jobPostImageFiles: j.jobPostImageFiles
         };

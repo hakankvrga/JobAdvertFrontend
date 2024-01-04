@@ -67,13 +67,25 @@ export class JobPostService { // ilan işlemlerini yönetmek için oluşturulan 
     return images;
   }
 
-  getJobPostById(id: number, succesCallBack?: ()=>void): Promise<GetJobPost> {
-   const getJobPostByIdObservable: Observable<GetJobPost> = this.httpClientService.get<GetJobPost>({
+  getJobPostById(id: number, succesCallBack?: () => void): Promise<GetJobPost> {
+    const getJobPostByIdObservable: Observable<GetJobPost> = this.httpClientService.get<GetJobPost>({
       controller: "jobPosts",
       fullEndPoint: `https://localhost:7138/api/jobposts/apply/${id}`
     }, id.toString());
+  
+    getJobPostByIdObservable.subscribe(
+      data => {
+        
+        if (succesCallBack) {
+          succesCallBack();
+        }
+      },
+      error => console.error('Error fetching Job Post:', error)
+    );
+  
     return firstValueFrom(getJobPostByIdObservable);
   }
+  
   async deleteImage(id: string, imageId: string, succesCallBack?: () => void) {
     const deleteObservable = this.httpClientService.delete({
       action: "DeleteJobPostImage",

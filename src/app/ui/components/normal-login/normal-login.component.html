@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="image col md-3">
+        <img width="200px" src="https://icon-library.com/images/professional-networking-icon/professional-networking-icon-5.jpg" alt="">
+      </div>
+      <div class="logintext">
+        <p>Giriş Yap</p>
+      </div>
+      <div class="mb-3">
+        <label for="userName" class="form-label">Kullanıcı Adı & Email</label>
+
+          <input #txtUsernameOrEmail type="text"  class="form-control" id="userName" placeholder="Kullanıcı Adı" >
+          <small class="form-text text-muted invalid-feedback" >***</small>
+         
+        </div>
+        
+        <div class="mb-3">
+          <label for="password" class="form-label">Şifre</label>
+          <input #txtPassword type="password" class="form-control" id="password" placeholder="Şifre" >
+        </div>
+
+        <!-- <asl-google-signin-button></asl-google-signin-button> -->
+        
+        <br>
+
+        <button  type="submit" class="btn btn-primary"  (click)="login(txtUsernameOrEmail.value,txtPassword.value)">Giriş Yap</button>
+      
+  
+    </div>
+    <div class="col-md-3"></div>
+  </div>

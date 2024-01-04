@@ -85,3 +85,7 @@
   padding: 20px;
   /* Sayfa içeriği iç boşluğu */
 }
+
+.btn-outline-success[routerLink='employer'] {
+  color: #ff5733; /* Yeni renk */
+}

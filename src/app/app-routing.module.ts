@@ -24,6 +24,7 @@ const routes: Routes = [
   {path:"normalRegister", loadChildren :()=> import("./ui/components/register/normal-register/normal-register.module").then(module=> module.NormalRegisterModule)},
   {path:"register", loadChildren :()=> import("./ui/components/register/register.module").then(module=> module.RegisterModule)},
   {path:"login", loadChildren :()=> import("./ui/components/login/login.module").then(module=> module.LoginModule)},
+  {path:"normalLogin", loadChildren :()=> import("./ui/components/normal-login/normal-login.module").then(module=> module.NormalLoginModule)},
   {path:"apply", loadChildren :()=> import("./ui/components/apply/apply.module").then(module=> module.ApplyModule)}
   
 ];

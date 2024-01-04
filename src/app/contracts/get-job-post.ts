@@ -10,4 +10,6 @@ export class GetJobPost {
     endDate: string;
     imagePath: string;
     jobPostImageFiles? : List_JobPost_Image[]; 
+  images: GetJobPost;
+  length: number;
 }
