@@ -12,4 +12,5 @@ export class GetJobPost {
     jobPostImageFiles? : List_JobPost_Image[]; 
   images: GetJobPost;
   length: number;
+  applicationStatusId: number;
 }

@@ -85,6 +85,9 @@ export class JobPostService { // ilan işlemlerini yönetmek için oluşturulan 
   
     return firstValueFrom(getJobPostByIdObservable);
   }
+
+ 
+
   
   async deleteImage(id: string, imageId: string, succesCallBack?: () => void) {
     const deleteObservable = this.httpClientService.delete({
@@ -114,6 +117,24 @@ export class JobPostService { // ilan işlemlerini yönetmek için oluşturulan 
     });
     return firstValueFrom(baseUrl);
   }
+
+
+  getApplicationStatuses(): Observable<any[]> {
+    return this.httpClientService.get<any[]>({
+      action: 'getApplicationStatuses',
+      controller: 'JobPosts'
+    });
+  }
+
+  applyForJob(jobPostId: number, applyStatusId: number, appUserId: string): Observable<any> {
+    const request = { JobPostId: jobPostId, ApplyStatusId: applyStatusId, AppUserId: appUserId };
+    return this.httpClientService.post<any>({
+      action: 'apply',
+      controller: 'JobPosts'
+    }, request);
+}
+
+  
  
 }
 

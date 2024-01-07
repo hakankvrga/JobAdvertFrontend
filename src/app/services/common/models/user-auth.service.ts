@@ -71,4 +71,14 @@ export class UserAuthService {
   }
 
 
+  async getAppUserId(): Promise<string | null> {
+    const observable: Observable<string | null> = this.httpClientService.get<string | null>({
+      controller: "user",
+      action: "getAppUserId"
+    });
+  
+    return firstValueFrom(observable);
+  }
+  
+
 }

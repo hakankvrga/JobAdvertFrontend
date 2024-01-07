@@ -16,7 +16,8 @@
       <h2>Şirket Adı</h2>
       <span>{{ jobPost?.companyName }}</span>
       <hr>
-      <button class="btn btn-success" (click)="applyForJob()">Başvuru Yap</button>
+      <button class="btn btn-success" [disabled]="isApplicationAccepted()" (click)="applyForJob(selectedApplyStatusId)">Başvuru Yap</button>
+
     </div>
   </div>
 
